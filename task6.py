@@ -19,12 +19,12 @@ def face_extractor(img):
 
     return cropped_face
 
-cap = cv2.VideoCapture(0)
+capr = cv2.VideoCapture(0)
 count = 0
 
 while True:
 
-    ret, frame = cap.read()
+    ret, frame = capr.read()
     if face_extractor(frame) is not None:
         count += 1
         face = cv2.resize(face_extractor(frame), (200, 200))
@@ -39,7 +39,7 @@ while True:
         cv2.imshow('Face Cropper', face)
 
     else:
-        print("Face not found")
+        print("Face is  not found")
         pass
 
     if cv2.waitKey(1) == 13 or count == 100:
@@ -47,7 +47,7 @@ while True:
 
 cv2.destroyAllWindows()
 cap.release()
-print("Collecting Samples Complete")
+print("Collecting is the  Samples Complete")
 
 
 
@@ -69,9 +69,9 @@ for i, files in enumerate(onlyfiles):
     Training_Data.append(np.asarray(images, dtype=np.uint8))
     Labels.append(i)
 
-Labels = np.asarray(Labels, dtype=np.int32)
+Label = np.asarray(Label, dtype=np.int32)
 model  = cv2.face_LBPHFaceRecognizer.create()
-model.train(np.asarray(Training_Data), np.asarray(Labels))
+model.train(np.asarray(Training_Data), np.asarray(Label))
 print("Model trained successfully")
 
 
@@ -84,15 +84,15 @@ import os, json, time, subprocess, cv2
 
 my_server = SMTP_SSL(host='smtp.gmail.com')
 
-msg = 'Mail from task'
+message= 'Mail from the task'
 def send_email():
-    msg = EmailMessage()
-    msg['Subject'] = 'Alert'
-    msg['From'] ='xyz@gmail.com'
-    msg['To'] = 'xyz@gmail.com'
-    msg.set_content('Hello u loggined')
+    message = EmailMessage()
+    message ['Subject'] = 'Alert'
+    message ['From'] ='xyz@gmail.com'
+    message ['To'] = 'xyz@gmail.com'
+    message.set_content('Hello u loggined')
     my_server.login('xyz@gmail.com', 'Password')
-    my_server.send_message(msg)
+    my_server.send_message(message )
 
 
 def send_whatsapp():
@@ -147,13 +147,13 @@ def face_detector(img, size=0.5):
     return img, roi
 
 
-# Open Webcam
+# Open Webcam :--
 cap = cv2.VideoCapture(0)
 
 while True:
 
 
-    _, frame = cap.read()
+    __, frame = cap.read()
     image, face = face_detector(frame)
 
     face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
